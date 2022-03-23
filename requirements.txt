@@ -8,3 +8,4 @@ geopy
 h3
 # nltk included in tabpy
 tabpy
+pyopenssl
