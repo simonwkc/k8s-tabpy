@@ -50,7 +50,11 @@ RUN apk add --no-cache $PACKAGES \
   && pip3 install --no-cache-dir -r requirements.txt  \
   && su tabpy -c "python3 -m textblob.download_corpora lite && python3 -m nltk.downloader vader_lexicon" \
   && su -c "tabpy --config ./tabpy.conf & (sleep 1 && tabpy-deploy-models) && killall tabpy" \
-  && apk del build-deps 
+  && apk del build-deps
+
+RUN apt-get update \
+  && apt-get install openssl \
+  && apt-get install ca-certificates  
 
 USER 1000:1000
 EXPOSE 9004
